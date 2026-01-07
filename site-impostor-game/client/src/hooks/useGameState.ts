@@ -295,7 +295,7 @@ export function useGameState() {
       playerCards,
       revealedPlayers: new Set(),
     }));
-  }, [gameState.numberOfPlayers]);
+    }, [gameState.numberOfPlayers, gameState.playerNames]);
 
   const resetGame = useCallback(() => {
     setGameState({
