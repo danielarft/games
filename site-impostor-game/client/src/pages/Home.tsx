@@ -6,6 +6,7 @@ import Reveal from './Reveal';
 
 export default function Home() {
   const { gameState, goToNaming, setPlayerNames, startGame, nextPlayer, endGame, resetGame } = useGameState();
+  const { gameState, goToNaming, setPlayerNames, startGame, nextPlayer, endGame, replayWithSameNames, resetGame } = useGameState();
 
   return (
     <>
