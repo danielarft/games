@@ -122,26 +122,32 @@ export default function Game({ gameState, onNextPlayer, onEndGame, onResetGame }
                 </div>
               ) : (
                 <div className="text-center space-y-4">
-                  <div className="text-white">
-                    <div className="text-6xl mb-4">
-                      {isImpostor ? '❓' : '🎯'}
-                    </div>
-                    <p className="text-lg font-semibold text-white mb-3" style={{ fontFamily: 'Poppins, sans-serif' }}>
-                      {currentPlayerName}
-                    </p>
-                    {isTouching && (
-                      <p
-                        className="text-3xl font-bold text-white"
-                        style={{ fontFamily: 'Poppins, sans-serif' }}
-                      >
-                        {isImpostor ? 'Você é o Impostor!' : secretWord}
-                      </p>
+                  <div className="text-center">
+                    {/* Conteúdo visível APENAS quando está segurando o card */}
+                    {isTouching ? (
+                      <div className="text-white animate-in fade-in duration-200">
+                        <div className="text-6xl mb-4">
+                          {isImpostor ? '❓' : '🎯'}
+                        </div>
+                        <p className="text-lg font-semibold mb-3" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                          {currentPlayerName}
+                        </p>
+                        <p className="text-3xl font-bold" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                          {isImpostor ? 'Você é o Impostor!' : secretWord}
+                        </p>
+                      </div>
+                    ) : (
+                      /* Conteúdo visível quando NÃO está segurando */
+                      <div className="flex flex-col items-center justify-center">
+                        <p className="text-2xl font-bold text-black mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                          {currentPlayerName}
+                        </p>
+                        <p className="text-base font-black uppercase tracking-widest" style={{ fontFamily: 'Inter, sans-serif', color: '#000000' }}>
+                          👇 Segure para ver
+                        </p>
+                      </div>
                     )}
-                    {!isTouching && (
-                      <p className="text-sm font-semibold" style={{ fontFamily: 'Inter, sans-serif', color: '#1A1A1A' }}>
-                        Segure para ver
-                      </p>
-                    )}
+                  </div>
                   </div>
               )}
             </div>
