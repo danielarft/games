@@ -30,7 +30,11 @@ export default function Home() {
         />
       )}
       {gameState.phase === 'reveal' && (
-        <Reveal gameState={gameState} onResetGame={resetGame} />
+        <Reveal 
+          gameState={gameState} 
+          onResetGame={resetGame}
+          onReplayWithSameNames={replayWithSameNames}
+        />
       )}
     </>
   );
