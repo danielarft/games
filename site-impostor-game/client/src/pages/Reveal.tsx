@@ -4,9 +4,10 @@ import { GameState } from '@/hooks/useGameState';
 interface RevealProps {
   gameState: GameState;
   onResetGame: () => void;
+  onReplayWithSameNames: () => void;
 }
 
-export default function Reveal({ gameState, onResetGame }: RevealProps) {
+export default function Reveal({ gameState, onResetGame, onReplayWithSameNames }: RevealProps) {
   const impostorName = gameState.playerNames[gameState.impostorIndex] || `Jogador ${gameState.impostorIndex + 1}`;
   const secretWord = gameState.secretWord;
 
@@ -71,11 +72,18 @@ export default function Reveal({ gameState, onResetGame }: RevealProps) {
         {/* Action Buttons */}
         <div className="space-y-3">
           <Button
-            onClick={onResetGame}
+            onClick={onReplayWithSameNames}
             className="w-full py-6 text-lg font-semibold rounded-xl bg-purple-600 hover:bg-purple-700 transition-all duration-300"
             style={{ fontFamily: 'Poppins, sans-serif' }}
           >
-            🔄 Jogar Novamente
+            🔄 Jogar Novamente (Mesmos Nomes)
+          </Button>
+          <Button
+            onClick={onResetGame}
+            className="w-full py-6 text-lg font-semibold rounded-xl bg-gray-300 hover:bg-gray-400 transition-all duration-300"
+            style={{ fontFamily: 'Poppins, sans-serif' }}
+          >
+            Novo Jogo (Novos Jogadores)
           </Button>
         </div>
       </div>
