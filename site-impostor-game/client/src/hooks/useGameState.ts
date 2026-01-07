@@ -19,10 +19,10 @@ const WORDS = [
   
   // Comida e Bebida
   'Pizza', 'Hambúrguer', 'Sorvete', 'Chocolate', 'Café', 'Suco', 'Refrigerante', 'Cerveja', 'Vinho', 'Champagne',
-  'Pão', 'Bolo', 'Biscoito', 'Doce', 'Caramelo', 'Brigadeiro', 'Beijinho', 'Açaí', 'Pão de Queijo', 'Feijoada',
-  'Churrasco', 'Moqueca', 'Acarajé', 'Pastel', 'Coxinha', 'Empada', 'Lasanha', 'Macarrão', 'Arroz', 'Feijão',
-  'Salada', 'Sopa', 'Caldo', 'Fruta', 'Maçã', 'Banana', 'Laranja', 'Morango', 'Melancia', 'Abacaxi',
-  'Melão', 'Uva', 'Pêra', 'Limão', 'Coco', 'Goiaba', 'Manga', 'Mamão', 'Cereja', 'Amora',
+  'Pão', 'Bolo', 'Biscoito', 'Doce', 'Caramelo', 'Brigadeiro', 'Beijinho', 'Pão de Queijo', 'Feijoada', 'Churrasco',
+  'Moqueca', 'Acarajé', 'Pastel', 'Coxinha', 'Empada', 'Lasanha', 'Macarrão', 'Arroz', 'Feijão', 'Salada',
+  'Sopa', 'Caldo', 'Fruta', 'Maçã', 'Banana', 'Laranja', 'Morango', 'Melancia', 'Abacaxi', 'Melão',
+  'Uva', 'Pêra', 'Limão', 'Coco', 'Goiaba', 'Manga', 'Mamão', 'Cereja', 'Amora',
   
   // Tecnologia
   'Computador', 'Celular', 'Tablet', 'Notebook', 'Teclado', 'Mouse', 'Monitor', 'Impressora', 'Scanner', 'Câmera',
@@ -46,23 +46,21 @@ const WORDS = [
   'Austrália', 'Nova Zelândia', 'Canadá', 'Estados Unidos', 'México', 'Argentina', 'Chile', 'Colômbia', 'Peru', 'Equador',
   
   // Celebridades Mundiais - Futebolistas
-  'Neymar', 'Pelé', 'Ronaldinho', 'Ronaldo', 'Ronaldinho Gaúcho', 'Cristiano Ronaldo', 'Messi', 'Mbappé', 'Haaland', 'Benzema',
-  'Modric', 'Iniesta', 'Xavi', 'Zidane', 'Maradona', 'Pele', 'Eusébio', 'Cruyff', 'Beckham', 'Zidane',
-  'Vinicius Junior', 'Rodrygo', 'Vinícius Júnior', 'Casemiro', 'Neymar Jr', 'Richarlison', 'Gabriel Jesus', 'Antony',
+  'Neymar', 'Pelé', 'Ronaldinho', 'Ronaldo', 'Cristiano Ronaldo', 'Messi', 'Mbappé', 'Haaland', 'Benzema', 'Modric',
+  'Iniesta', 'Xavi', 'Zidane', 'Maradona', 'Eusébio', 'Cruyff', 'Beckham', 'Vinicius Junior', 'Richarlison', 'Gabriel Jesus', 'Antony',
   
   // Celebridades Mundiais - Música
   'Taylor Swift', 'Beyoncé', 'Rihanna', 'Ariana Grande', 'Dua Lipa', 'The Weeknd', 'Drake', 'Bad Bunny', 'Post Malone', 'Billie Eilish',
-  'Ed Sheeran', 'Bruno Mars', 'Weeknd', 'Justin Bieber', 'Shakira', 'Anitta', 'Ludmilla', 'Pabllo Vittar', 'Ivete Sangalo', 'Claudia Leitte',
-  'Gal Costa', 'Gilberto Gil', 'Tom Jobim', 'João Gilberto', 'Caetano Veloso', 'Tropicália', 'Legião Urbana', 'Titãs', 'Engenheiros do Hawaii',
+  'Ed Sheeran', 'Bruno Mars', 'Justin Bieber', 'Shakira', 'Anitta', 'Ludmilla', 'Pabllo Vittar', 'Ivete Sangalo', 'Claudia Leitte',
+  'Gal Costa', 'Gilberto Gil', 'Tom Jobim', 'João Gilberto', 'Caetano Veloso', 'Legião Urbana', 'Titãs', 'Engenheiros do Hawaii',
   
   // Celebridades Mundiais - Cinema e TV
   'Tom Hanks', 'Leonardo DiCaprio', 'Brad Pitt', 'Johnny Depp', 'Morgan Freeman', 'Denzel Washington', 'Will Smith', 'Tom Cruise', 'Keanu Reeves',
   'Meryl Streep', 'Angelina Jolie', 'Jennifer Aniston', 'Scarlett Johansson', 'Margot Robbie', 'Zendaya', 'Emma Watson', 'Millie Bobby Brown',
-  'Bruna Marquezine', 'Camila Queiroz', 'Grazi Massafera', 'Globo', 'Netflix', 'Disney', 'Marvel', 'DC',
+  'Bruna Marquezine', 'Camila Queiroz', 'Grazi Massafera',
   
   // Celebridades Brasileiras
-  'Neymar', 'Anitta', 'Ludmilla', 'Pabllo Vittar', 'Ivete Sangalo', 'Claudia Leitte', 'Gisele Bündchen', 'Bruna Marquezine', 'Camila Queiroz',
-  'Grazi Massafera', 'Fernanda Montenegro', 'Sônia Braga', 'Tarantino', 'Spielberg', 'Scorsese', 'Kubrick',
+  'Gisele Bündchen', 'Fernanda Montenegro', 'Sônia Braga',
   
   // Temas Brasileiros
   'Samba', 'Carnaval', 'Bossa Nova', 'Forró', 'Axé', 'Tropicália', 'Sertanejo', 'Funk Carioca', 'Pagode', 'Samba-Enredo',
@@ -93,12 +91,12 @@ const WORDS = [
   'Futebol', 'Basquete', 'Tênis', 'Natação', 'Atletismo', 'Ginástica', 'Judô', 'Karatê', 'Boxe', 'MMA',
   'Vôlei', 'Handebol', 'Hóquei', 'Críquete', 'Beisebol', 'Golfe', 'Esqui', 'Snowboard', 'Surfe', 'Skate',
   'Escalada', 'Paraquedismo', 'Bungee Jump', 'Mergulho', 'Vela', 'Canoagem', 'Rafting', 'Ciclismo', 'Hipismo', 'Arco e Flecha',
-  'Curling', 'Bobsled', 'Patinação', 'Dança', 'Capoeira', 'Yoga', 'Pilates', 'Crossfit', 'Musculação', 'Corrida',
+  'Curling', 'Bobsled', 'Patinação', 'Dança', 'Yoga', 'Pilates', 'Crossfit', 'Musculação', 'Corrida',
   
   // Artes e Cultura
   'Pintura', 'Escultura', 'Fotografia', 'Cinema', 'Teatro', 'Dança', 'Música', 'Literatura', 'Poesia', 'Prosa',
   'Quadrinho', 'Animação', 'Documentário', 'Série', 'Filme', 'Novela', 'Telenovela', 'Reality Show', 'Game Show', 'Jornal',
-  'Revista', 'Jornal', 'Podcast', 'Blog', 'Vlog', 'TikTok', 'Instagram', 'YouTube', 'Twitch', 'Discord',
+  'Revista', 'Podcast', 'Blog', 'Vlog', 'TikTok', 'Instagram', 'YouTube', 'Twitch', 'Discord',
   
   // Cores
   'Vermelho', 'Azul', 'Verde', 'Amarelo', 'Roxo', 'Laranja', 'Rosa', 'Marrom', 'Preto', 'Branco',
@@ -109,11 +107,11 @@ const WORDS = [
   'Engenheiro', 'Arquiteto', 'Designer', 'Programador', 'Desenvolvedor', 'Hacker', 'Jornalista', 'Fotógrafo', 'Diretor', 'Produtor',
   'Ator', 'Cantante', 'Músico', 'Compositor', 'Maestro', 'Dançarino', 'Coreógrafo', 'Professor', 'Pesquisador', 'Cientista',
   'Astrônomo', 'Biólogo', 'Químico', 'Físico', 'Matemático', 'Historiador', 'Arqueólogo', 'Antropólogo', 'Sociólogo', 'Economista',
-  'Contador', 'Auditor', 'Consultor', 'Gerente', 'Diretor', 'CEO', 'Presidente', 'Ministro', 'Senador', 'Deputado',
-  'Vereador', 'Prefeito', 'Governador', 'Presidente', 'Embaixador', 'Diplomata', 'Piloto', 'Comissário', 'Capitão', 'Marinheiro',
-  'Mecânico', 'Eletricista', 'Encanador', 'Carpinteiro', 'Pedreiro', 'Pintor', 'Jardineiro', 'Fazendeiro', 'Pescador', 'Caçador',
-  'Chef', 'Cozinheiro', 'Garçom', 'Barman', 'Sommelier', 'Padeiro', 'Pasteleiro', 'Confeiteiro', 'Açougueiro', 'Fruticultor',
-  'Florista', 'Veterinário', 'Zootecnista', 'Agrônomo', 'Geólogo', 'Meteorologista', 'Oceanógrafo', 'Ecólogo', 'Ambientalista',
+  'Contador', 'Auditor', 'Consultor', 'Gerente', 'CEO', 'Presidente', 'Ministro', 'Senador', 'Deputado', 'Vereador',
+  'Prefeito', 'Governador', 'Embaixador', 'Diplomata', 'Piloto', 'Comissário', 'Capitão', 'Marinheiro', 'Mecânico', 'Eletricista',
+  'Encanador', 'Carpinteiro', 'Pedreiro', 'Pintor', 'Jardineiro', 'Fazendeiro', 'Pescador', 'Caçador', 'Chef', 'Cozinheiro',
+  'Garçom', 'Barman', 'Sommelier', 'Padeiro', 'Pasteleiro', 'Confeiteiro', 'Açougueiro', 'Fruticultor', 'Florista', 'Veterinário',
+  'Zootecnista', 'Agrônomo', 'Geólogo', 'Meteorologista', 'Oceanógrafo', 'Ecólogo', 'Ambientalista',
   
   // Objetos Comuns
   'Livro', 'Caneta', 'Lápis', 'Borracha', 'Caderno', 'Papel', 'Tesoura', 'Cola', 'Fita', 'Clipe',
@@ -124,8 +122,8 @@ const WORDS = [
   'Shorts', 'Bermuda', 'Calção', 'Legging', 'Meia', 'Cueca', 'Sutiã', 'Calcinha', 'Gravata', 'Lenço',
   'Chapéu', 'Boné', 'Gorro', 'Echarpe', 'Cachecol', 'Luva', 'Bota', 'Sapato', 'Tênis', 'Chinelo',
   'Sandália', 'Mule', 'Salto Alto', 'Mocassim', 'Pantufla', 'Mochila', 'Bolsa', 'Carteira', 'Porta-moedas', 'Chaveiro',
-  'Cinto', 'Relógio', 'Anel', 'Colar', 'Pulseira', 'Brinco', 'Broche', 'Alfinete', 'Corrente', 'Pingente',
-  'Óculos', 'Óculos de Sol', 'Lente de Contato', 'Armação', 'Lupa', 'Binóculo', 'Telescópio', 'Microscópio', 'Periscópio',
+  'Cinto', 'Anel', 'Colar', 'Pulseira', 'Brinco', 'Broche', 'Alfinete', 'Corrente', 'Pingente', 'Óculos',
+  'Óculos de Sol', 'Lente de Contato', 'Armação', 'Lupa', 'Binóculo', 'Telescópio', 'Microscópio', 'Periscópio',
   
   // Móveis e Decoração
   'Cama', 'Sofá', 'Poltrona', 'Cadeira', 'Mesa', 'Criado', 'Guarda-roupa', 'Cômoda', 'Prateleira', 'Estante',
@@ -133,10 +131,10 @@ const WORDS = [
   'Panela', 'Frigideira', 'Assadeira', 'Forma', 'Peneira', 'Ralador', 'Escorredor', 'Coador', 'Colher', 'Garfo',
   'Faca', 'Prato', 'Tigela', 'Xícara', 'Copo', 'Garrafa', 'Jarra', 'Bule', 'Chaleira', 'Açucareiro',
   'Manteigueira', 'Saleiro', 'Pimenteiro', 'Molheira', 'Travessa', 'Bandeja', 'Talheres', 'Louça', 'Cristal', 'Vidro',
-  'Cerâmica', 'Porcelana', 'Barro', 'Madeira', 'Metal', 'Plástico', 'Vidro', 'Silicone', 'Borracha', 'Cortiça',
-  'Tapete', 'Cortina', 'Persiana', 'Cortinado', 'Almofada', 'Colcha', 'Edredom', 'Lençol', 'Fronha', 'Manta',
-  'Quadro', 'Espelho', 'Luminária', 'Abajur', 'Vela', 'Incenso', 'Difusor', 'Plantas', 'Flores', 'Vasos',
-  'Potes', 'Caixas', 'Gavetas', 'Nichos', 'Prateleiras', 'Cabideiro', 'Espelho', 'Quadro', 'Adesivo', 'Painel',
+  'Cerâmica', 'Porcelana', 'Barro', 'Madeira', 'Metal', 'Plástico', 'Silicone', 'Borracha', 'Cortiça', 'Tapete',
+  'Cortina', 'Persiana', 'Cortinado', 'Almofada', 'Colcha', 'Edredom', 'Lençol', 'Fronha', 'Manta', 'Quadro',
+  'Espelho', 'Luminária', 'Abajur', 'Vela', 'Incenso', 'Difusor', 'Plantas', 'Flores', 'Vasos', 'Potes',
+  'Caixas', 'Gavetas', 'Nichos', 'Cabideiro', 'Adesivo', 'Painel',
   
   // Meios de Transporte
   'Carro', 'Bicicleta', 'Moto', 'Ônibus', 'Táxi', 'Uber', 'Trem', 'Metrô', 'Bonde', 'Ônibus Articulado',
@@ -144,7 +142,7 @@ const WORDS = [
   'Ambulância', 'Carro de Polícia', 'Carro de Bombeiros', 'Trator', 'Escavadeira', 'Retroescavadeira', 'Pá Carregadeira', 'Rolo Compressor',
   'Avião', 'Helicóptero', 'Drone', 'Paraquedas', 'Asa Delta', 'Balão', 'Dirigível', 'Foguete', 'Nave Espacial', 'Satélite',
   'Barco', 'Iate', 'Lancha', 'Canoa', 'Caiaque', 'Jangada', 'Navio', 'Navio de Cruzeiro', 'Cargueiro', 'Petroleiro',
-  'Submarino', 'Balsa', 'Balseiro', 'Rebocador', 'Draga', 'Navio Pesqueiro', 'Navio Militar', 'Porta-aviões', 'Destroyer', 'Fragata',
+  'Submarino', 'Balsa', 'Rebocador', 'Draga', 'Navio Pesqueiro', 'Navio Militar', 'Porta-aviões', 'Destroyer', 'Fragata',
   
   // Edifícios e Construções
   'Casa', 'Apartamento', 'Mansão', 'Castelo', 'Palácio', 'Fortaleza', 'Convento', 'Mosteiro', 'Abadia', 'Catedral',
@@ -170,14 +168,14 @@ const WORDS = [
   // Sentimentos e Emoções
   'Alegria', 'Tristeza', 'Raiva', 'Medo', 'Amor', 'Ódio', 'Inveja', 'Ciúmes', 'Orgulho', 'Vergonha',
   'Culpa', 'Esperança', 'Desespero', 'Coragem', 'Covardia', 'Confiança', 'Desconfiança', 'Segurança', 'Insegurança', 'Calma',
-  'Ansiedade', 'Stress', 'Relaxamento', 'Tensão', 'Relaxação', 'Excitação', 'Entusiasmo', 'Apatia', 'Melancolia', 'Euforia',
-  'Depressão', 'Mania', 'Paranoia', 'Fobia', 'Pânico', 'Terror', 'Horror', 'Nojo', 'Repugnância', 'Aversão',
+  'Ansiedade', 'Stress', 'Relaxamento', 'Tensão', 'Excitação', 'Entusiasmo', 'Apatia', 'Melancolia', 'Euforia', 'Depressão',
+  'Mania', 'Paranoia', 'Fobia', 'Pânico', 'Terror', 'Horror', 'Nojo', 'Repugnância', 'Aversão',
   
   // Conceitos Abstratos
   'Tempo', 'Espaço', 'Infinito', 'Eternidade', 'Momento', 'Segundo', 'Minuto', 'Hora', 'Dia', 'Noite',
   'Semana', 'Mês', 'Ano', 'Década', 'Século', 'Milênio', 'Era', 'Época', 'Período', 'Fase',
   'Passado', 'Presente', 'Futuro', 'Antes', 'Depois', 'Agora', 'Então', 'Sempre', 'Nunca', 'Raramente',
-  'Frequentemente', 'Ocasionalmente', 'Eventualmente', 'Finalmente', 'Ultimamente', 'Recentemente', 'Antigamente', 'Outrora', 'Jamais', 'Sempre',
+  'Frequentemente', 'Ocasionalmente', 'Eventualmente', 'Finalmente', 'Ultimamente', 'Recentemente', 'Antigamente', 'Outrora', 'Jamais',
   'Verdade', 'Mentira', 'Ilusão', 'Realidade', 'Ficção', 'Fantasia', 'Imaginação', 'Criatividade', 'Inteligência', 'Sabedoria',
   'Conhecimento', 'Ignorância', 'Aprendizado', 'Educação', 'Cultura', 'Civilização', 'Progresso', 'Evolução', 'Revolução', 'Transformação',
   'Mudança', 'Permanência', 'Estabilidade', 'Instabilidade', 'Equilíbrio', 'Desequilíbrio', 'Ordem', 'Caos', 'Harmonia', 'Discórdia',
@@ -276,6 +274,29 @@ export function useGameState() {
     }));
   }, []);
 
+  const replayWithSameNames = useCallback(() => {
+    // Start a new game with the same player names
+    const randomArray = new Uint32Array(1);
+    crypto.getRandomValues(randomArray);
+    const impostorIndex = randomArray[0] % gameState.numberOfPlayers;
+    
+    const secretWord = WORDS[Math.floor(Math.random() * WORDS.length)];
+    
+    const playerCards = Array.from({ length: gameState.numberOfPlayers }, (_, index) => {
+      return index === impostorIndex ? '❓ IMPOSTOR' : `🎯 ${secretWord}`;
+    });
+
+    setGameState((prev) => ({
+      ...prev,
+      phase: 'playing',
+      currentPlayerIndex: 0,
+      impostorIndex,
+      secretWord,
+      playerCards,
+      revealedPlayers: new Set(),
+    }));
+  }, [gameState.numberOfPlayers]);
+
   const resetGame = useCallback(() => {
     setGameState({
       phase: 'setup',
@@ -297,6 +318,5 @@ export function useGameState() {
     nextPlayer,
     revealPlayer,
     endGame,
+    replayWithSameNames,
     resetGame,
-  };
-}
