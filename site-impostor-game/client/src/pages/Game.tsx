@@ -13,6 +13,7 @@ interface GameProps {
 export default function Game({ gameState, onNextPlayer, onEndGame, onResetGame }: GameProps) {
   const [cardRevealed, setCardRevealed] = useState(false);
   const [showBlankScreen, setShowBlankScreen] = useState(false);
+  const [isTouching, setIsTouching] = useState(false);
 
   const currentPlayer = gameState.currentPlayerIndex + 1;
   const totalPlayers = gameState.numberOfPlayers;
@@ -25,6 +26,7 @@ export default function Game({ gameState, onNextPlayer, onEndGame, onResetGame }
   const handlePassPhone = () => {
     setShowBlankScreen(true);
     setCardRevealed(false);
+    setIsTouching(false);
     
     // Wait for the next player to be ready
     setTimeout(() => {
@@ -34,6 +36,8 @@ export default function Game({ gameState, onNextPlayer, onEndGame, onResetGame }
   };
 
   const isImpostor = gameState.currentPlayerIndex === gameState.impostorIndex;
+  const secretWord = gameState.secretWord;
+  const hint = isImpostor ? getHint(secretWord) : null;
 
   // Blank screen for passing the phone safely
   if (showBlankScreen) {
@@ -51,32 +55,57 @@ export default function Game({ gameState, onNextPlayer, onEndGame, onResetGame }
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 py-8 bg-gradient-to-br from-white via-white to-purple-50" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-      <div className="w-full max-w-md">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold mb-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
-            🎭 Impostor
-          </h1>
-          <p className="text-lg text-purple-600 font-semibold" style={{ fontFamily: 'Poppins, sans-serif' }}>
-            {currentPlayerName}
-          </p>
-          <p className="text-sm text-gray-500" style={{ fontFamily: 'Inter, sans-serif' }}>
-            ({currentPlayer} de {totalPlayers})
-          </p>
-        </div>
+      <div className="w-full max-w-md flex flex-col flex-1 justify-center">
+        {/* Header - Hidden when card is revealed */}
+        {!cardRevealed && (
+          <div className="text-center mb-8">
+            <h1 className="text-4xl font-bold mb-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
+              🎭 Impostor
+            </h1>
+            <p className="text-lg text-purple-600 font-semibold" style={{ fontFamily: 'Poppins, sans-serif' }}>
+              {currentPlayerName}
+            </p>
+            <p className="text-sm text-gray-500" style={{ fontFamily: 'Inter, sans-serif' }}>
+              ({currentPlayer} de {totalPlayers})
+            </p>
+          </div>
+        )}
 
         {/* Card Container */}
-        <div className="mb-8">
+        <div className="mb-8 flex-1 flex items-center justify-center">
           <div
-            className={`relative w-full aspect-square rounded-3xl shadow-2xl cursor-pointer transition-all duration-500 transform ${
+            className={`relative w-full max-w-xs aspect-square rounded-3xl shadow-2xl cursor-pointer transition-all duration-300 transform ${
               cardRevealed ? 'scale-100' : 'hover:scale-105'
             }`}
             onClick={!cardRevealed ? handleRevealCard : undefined}
+            onTouchStart={() => {
+              if (cardRevealed) {
+                setIsTouching(true);
+              }
+            }}
+            onTouchEnd={() => {
+              setIsTouching(false);
+            }}
+            onMouseDown={() => {
+              if (cardRevealed) {
+                setIsTouching(true);
+              }
+            }}
+            onMouseUp={() => {
+              setIsTouching(false);
+            }}
+            onMouseLeave={() => {
+              setIsTouching(false);
+            }}
             style={{
               background: cardRevealed
-                ? 'linear-gradient(135deg, #6B46C1 0%, #8B5CF6 100%)'
+                ? isTouching
+                  ? 'linear-gradient(135deg, #6B46C1 0%, #8B5CF6 100%)'
+                  : 'linear-gradient(135deg, #E5E7EB 0%, #D1D5DB 100%)'
                 : 'linear-gradient(135deg, #E5E7EB 0%, #D1D5DB 100%)',
               perspective: '1000px',
+              userSelect: 'none',
+              WebkitUserSelect: 'none',
             }}
           >
             {/* Card Content */}
@@ -92,20 +121,39 @@ export default function Game({ gameState, onNextPlayer, onEndGame, onResetGame }
                   </p>
                 </div>
               ) : (
-                <div className="text-center">
+                <div className="text-center space-y-4">
                   <div className="text-white">
                     <div className="text-6xl mb-4">
-                      {gameState.playerCards[gameState.currentPlayerIndex].includes('IMPOSTOR')
-                        ? '❓'
-                        : '🎯'}
+                      {isImpostor ? '❓' : '🎯'}
                     </div>
-                    <p
-                      className="text-3xl font-bold text-white"
-                      style={{ fontFamily: 'Poppins, sans-serif' }}
-                    >
-                      {gameState.playerCards[gameState.currentPlayerIndex].replace('❓ ', '').replace('🎯 ', '')}
+                    <p className="text-lg font-semibold text-white mb-3" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                      {currentPlayerName}
                     </p>
+                    {isTouching && (
+                      <p
+                        className="text-3xl font-bold text-white"
+                        style={{ fontFamily: 'Poppins, sans-serif' }}
+                      >
+                        {isImpostor ? 'Você é o Impostor!' : secretWord}
+                      </p>
+                    )}
+                    {!isTouching && (
+                      <p className="text-sm font-semibold" style={{ fontFamily: 'Inter, sans-serif', color: '#1A1A1A' }}>
+                        Segure para ver
+                      </p>
+                    )}
                   </div>
+                  {/* Hint for impostor */}
+                  {isImpostor && isTouching && hint && (
+                    <div className="mt-6 bg-white bg-opacity-20 rounded-lg p-3 backdrop-blur">
+                      <p className="text-xs text-gray-200 mb-1" style={{ fontFamily: 'Inter, sans-serif' }}>
+                        💡 DICA:
+                      </p>
+                      <p className="text-sm text-white font-semibold" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                        {hint}
+                      </p>
+                    </div>
+                  )}
                 </div>
               )}
             </div>
@@ -131,53 +179,49 @@ export default function Game({ gameState, onNextPlayer, onEndGame, onResetGame }
             >
               ➡️ Passar para o próximo
             </Button>
+            <Button
+              onClick={onEndGame}
+              className="w-full py-6 text-lg font-semibold rounded-xl bg-red-500 hover:bg-red-600 transition-all duration-300"
+              style={{ fontFamily: 'Poppins, sans-serif' }}
+            >
+              🛑 Finalizar Jogo
+            </Button>
+            <Button
+              onClick={onResetGame}
+              className="w-full py-6 text-lg font-semibold rounded-xl bg-gray-300 hover:bg-gray-400 transition-all duration-300"
+              style={{ fontFamily: 'Poppins, sans-serif' }}
+            >
+              🔄 Novo Jogo
+            </Button>
           </div>
         )}
 
-        {/* Game Controls */}
-        <div className="mt-8 pt-6 border-t border-gray-200 space-y-3">
-          <Button
-            onClick={onEndGame}
-            variant="outline"
-            className="w-full py-4 text-base font-semibold rounded-xl"
-            style={{ fontFamily: 'Poppins, sans-serif' }}
-          >
-            🛑 Finalizar Jogo
-          </Button>
-          <Button
-            onClick={onResetGame}
-            variant="ghost"
-            className="w-full py-4 text-base font-semibold rounded-xl"
-            style={{ fontFamily: 'Poppins, sans-serif' }}
-          >
-            🔄 Novo Jogo
-          </Button>
-        </div>
-
-        {/* Player Progress */}
-        <div className="mt-8 pt-6 border-t border-gray-200">
-          <p className="text-xs text-gray-500 mb-3" style={{ fontFamily: 'Inter, sans-serif' }}>
-            Progresso dos jogadores:
-          </p>
-          <div className="flex flex-wrap gap-2 justify-center">
-            {Array.from({ length: totalPlayers }).map((_, index) => (
-              <div
-                key={index}
-                className={`px-3 py-2 rounded-full flex items-center justify-center font-semibold text-xs transition-all ${
-                  index === gameState.currentPlayerIndex
-                    ? 'bg-purple-600 text-white scale-105 shadow-lg'
-                    : gameState.revealedPlayers.has(index)
-                    ? 'bg-green-500 text-white'
-                    : 'bg-gray-200 text-gray-700'
-                }`}
-                style={{ fontFamily: 'Inter, sans-serif' }}
-                title={gameState.playerNames[index]}
-              >
-                {gameState.playerNames[index].substring(0, 8)}
-              </div>
-            ))}
+        {/* Progress Indicators */}
+        {!cardRevealed && (
+          <div className="mt-8 pt-6 border-t border-gray-200">
+            <p className="text-xs text-gray-500 mb-3 text-center" style={{ fontFamily: 'Inter, sans-serif' }}>
+              Progresso dos jogadores:
+            </p>
+            <div className="flex flex-wrap gap-2 justify-center">
+              {Array.from({ length: gameState.numberOfPlayers }).map((_, index) => (
+                <button
+                  key={index}
+                  className={`px-3 py-1 rounded-full text-sm font-semibold transition-all ${
+                    index === gameState.currentPlayerIndex
+                      ? 'bg-purple-600 text-white'
+                      : gameState.revealedPlayers.has(index)
+                      ? 'bg-green-500 text-white'
+                      : 'bg-gray-200 text-gray-700'
+                  }`}
+                  style={{ fontFamily: 'Inter, sans-serif' }}
+                  disabled
+                >
+                  {gameState.playerNames[index] || `J${index + 1}`}
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
