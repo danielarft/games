@@ -320,3 +320,4 @@ export function useGameState() {
     endGame,
     replayWithSameNames,
     resetGame,
+  };
