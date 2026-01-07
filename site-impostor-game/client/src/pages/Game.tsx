@@ -143,18 +143,6 @@ export default function Game({ gameState, onNextPlayer, onEndGame, onResetGame }
                       </p>
                     )}
                   </div>
-                  {/* Hint for impostor */}
-                  {isImpostor && isTouching && hint && (
-                    <div className="mt-6 bg-white bg-opacity-20 rounded-lg p-3 backdrop-blur">
-                      <p className="text-xs text-gray-200 mb-1" style={{ fontFamily: 'Inter, sans-serif' }}>
-                        💡 DICA:
-                      </p>
-                      <p className="text-sm text-white font-semibold" style={{ fontFamily: 'Poppins, sans-serif' }}>
-                        {hint}
-                      </p>
-                    </div>
-                  )}
-                </div>
               )}
             </div>
           </div>
